@@ -13,7 +13,18 @@
       >
         Mobile
       </router-link>
-      <router-link class="nav-item is-tab" to="/login"> Login </router-link>
+      <router-link class="nav-item is-tab" to="/login">
+        <span v-if="isAuthenticated">Logout</span><span v-else>Login</span>
+      </router-link>
     </div>
   </nav>
 </template>
+<script>
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated;
+    },
+  },
+};
+</script>

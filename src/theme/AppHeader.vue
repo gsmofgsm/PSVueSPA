@@ -20,11 +20,10 @@
   </nav>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   computed: {
-    isAuthenticated() {
-      return this.$store.state.isAuthenticated;
-    },
+    ...mapGetters(["isAuthenticated"]),
   },
 };
 </script>

@@ -9,6 +9,11 @@ const state = {
 
 const store = new Vuex.Store({
   state,
+  getters: {
+    isAuthenticated: (state) => {
+      return state.isAuthenticated;
+    },
+  },
 });
 
 export default store;

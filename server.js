@@ -9,6 +9,8 @@ const indexHTML = (() => {
 
 app.use("/dist", express.static(path.resolve(__dirname, "./dist")));
 
+require("./build/dev-server")(app);
+
 // this handles all get request, since this is a SPA
 app.get("*", (req, res) => {
   res.write(indexHTML);

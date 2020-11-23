@@ -1,9 +1,15 @@
 const express = require("express");
 const app = express();
+const fs = require("fs");
+const path = require("path");
+
+const indexHTML = (() => {
+  return fs.readFileSync(path.resolve(__dirname, "./index.html"), "utf-8");
+})();
 
 // this handles all get request, since this is a SPA
 app.get("*", (req, res) => {
-  res.write("hey there");
+  res.write(indexHTML);
   res.end();
 });
 

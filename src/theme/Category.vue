@@ -92,6 +92,7 @@ export default {
   },
   created() {
     this.loadPosts();
+    console.log(this.$route.query.page);
   },
 };
 </script>

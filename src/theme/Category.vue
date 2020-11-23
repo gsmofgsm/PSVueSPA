@@ -22,7 +22,8 @@ export default {
   },
   data() {
     return {
-      posts: [
+      id: this.$route.params.id,
+      postsFrontEnd: [
         {
           id: 1,
           title: "PWA Stats",
@@ -46,6 +47,8 @@ export default {
           link:
             "https://medium.freecodecamp.com/so-whats-this-graphql-thing-i-keep-hearing-about-baf4d36c20cf",
         },
+      ],
+      postsMobile: [
         {
           id: 4,
           title: "State of The Mobile Gap Between Native and Web",
@@ -69,7 +72,26 @@ export default {
           link: "https://css-tricks.com/power-custom-directives-vue/",
         },
       ],
+      posts: [],
     };
+  },
+  methods: {
+    loadPosts() {
+      if (this.id === "front-end") {
+        this.posts = this.postsFrontEnd;
+      } else {
+        this.posts = this.postsMobile;
+      }
+    },
+  },
+  watch: {
+    $route(to, from) {
+      this.id = to.params.id;
+      this.loadPosts();
+    },
+  },
+  created() {
+    this.loadPosts();
   },
 };
 </script>

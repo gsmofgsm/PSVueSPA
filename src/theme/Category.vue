@@ -5,7 +5,9 @@
       v-for="(post, title) in posts"
       v-bind:key="post.id"
     >
-      <app-post :post="post"></app-post>
+      <app-post :post="post">
+        <h3>{{ post.title }}</h3>
+      </app-post>
     </div>
   </div>
 </template>

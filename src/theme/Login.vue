@@ -87,24 +87,16 @@ export default {
       logout: "logout",
     }),
     login() {
-      appService
-        .login({ username: this.username, password: this.password })
-        .then((data) => {
-          window.localStorage.setItem("token", data.token);
-          window.localStorage.setItem("tokenExpiration", data.expiration);
-          // this.isAuthenticated = true;
+      this.$store
+        .dispatch("login", {
+          username: this.username,
+          password: this.password,
+        })
+        .then(() => {
           this.username = "";
           this.password = "";
-        })
-        .catch(() => window.alert("Could not login!"));
+        });
     },
-  },
-  created() {
-    let expiration = window.localStorage.getItem("tokenExpiration");
-    var unixTimestamp = new Date().getTime() / 1000;
-    if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
-      // this.isAuthenticated = true;
-    }
   },
 };
 </script>

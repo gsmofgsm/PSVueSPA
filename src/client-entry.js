@@ -1,3 +1,6 @@
 import { app } from "./app";
+import router from "./router";
 
-app.$mount("#app");
+router.onReady(() => {
+  app.$mount("#app");
+});

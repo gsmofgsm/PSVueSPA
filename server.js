@@ -21,8 +21,8 @@ app.get("*", (req, res) => {
     if (err) {
       return res.status(500).send("Server Error");
     }
-    console.log(html);
-    res.write(indexHTML);
+    html = indexHTML.replace("{{ APP }}", html);
+    res.write(html);
     res.end();
   });
 });
